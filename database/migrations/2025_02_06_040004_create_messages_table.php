@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Admin;
 use App\Models\Message;
-use App\Models\Sale;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on((new User())->getTable());
             $table->unsignedBigInteger('sale_id');
-            $table->foreign('sale_id')->references('id')->on((new Sale())->getTable());
+            $table->foreign('sale_id')->references('id')->on((new Admin())->getTable());
             $table->tinyInteger('status')->default(Message::ACTIVE_MESSAGE);
             $table->text('content');
             $table->timestamp('read_at')->nullable();

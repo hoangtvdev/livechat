@@ -16,11 +16,12 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->string('guest_id', Message::GUEST_ID_LENGTH)->index('guest_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on((new User())->getTable());
             $table->unsignedBigInteger('sale_id');
             $table->foreign('sale_id')->references('id')->on((new Sale())->getTable());
-            $table->boolean('status')->default(Message::ACTIVE_MES);
+            $table->tinyInteger('status')->default(Message::ACTIVE_MESSAGE);
             $table->text('content');
             $table->timestamp('read_at')->nullable();
             $table->timestamps();

@@ -9,7 +9,9 @@ class Message extends Model
 {
     use HasFactory;
 
-    const ACTIVE_MES = 1;
-    const UPDATED_MES = 2;
-    const DELETED_MES = 0;
+    const ACTIVE_MESSAGE = 1;
+    const UPDATED_MESSAGE = 2;
+    const DELETED_MESSAGE = 0;
+
+    const GUEST_ID_LENGTH = 10;
 }
